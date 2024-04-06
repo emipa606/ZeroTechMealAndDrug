@@ -17,11 +17,8 @@ public class Thought_BeautyPill : ThoughtWorker
             return false;
         }
 
-        if (other.health.hediffSet.HasHediff(DefDatabase<HediffDef>.GetNamed("BeautyPill")))
-        {
-            return ThoughtState.ActiveAtStage(0);
-        }
-
-        return false;
+        return other.health.hediffSet.HasHediff(DefDatabase<HediffDef>.GetNamed("BeautyPill"))
+            ? ThoughtState.ActiveAtStage(0)
+            : false;
     }
 }

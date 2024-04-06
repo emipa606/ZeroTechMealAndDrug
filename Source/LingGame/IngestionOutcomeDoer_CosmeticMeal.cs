@@ -5,21 +5,23 @@ namespace LingGame;
 
 public class IngestionOutcomeDoer_CosmeticMeal : IngestionOutcomeDoer
 {
-    protected override void DoIngestionOutcomeSpecial(Pawn pawn, Thing ingested)
+    private static readonly TraitDef beauty = TraitDef.Named("Beauty");
+
+    protected override void DoIngestionOutcomeSpecial(Pawn pawn, Thing ingested, int ingestedCount)
     {
         if (!pawn.RaceProps.Humanlike)
         {
             return;
         }
 
-        if (pawn.story.traits.HasTrait(TraitDefOf.Beauty))
+        if (pawn.story.traits.HasTrait(beauty))
         {
-            var trait = pawn.story.traits.GetTrait(TraitDefOf.Beauty);
+            var trait = pawn.story.traits.GetTrait(beauty);
             pawn.story.traits.allTraits.Remove(trait);
         }
 
         var degree = new[] { -2, -1, 1, 2 }.RandomElement();
-        var trait2 = new Trait(TraitDefOf.Beauty, degree);
+        var trait2 = new Trait(beauty, degree);
         pawn.story.traits.GainTrait(trait2);
     }
 }

@@ -17,11 +17,8 @@ public class Thought_BreakFellingPill : ThoughtWorker
             return false;
         }
 
-        if (other.health.hediffSet.HasHediff(DefDatabase<HediffDef>.GetNamed("BreakFellingPill")))
-        {
-            return ThoughtState.ActiveAtStage(0);
-        }
-
-        return false;
+        return other.health.hediffSet.HasHediff(DefDatabase<HediffDef>.GetNamed("BreakFellingPill"))
+            ? ThoughtState.ActiveAtStage(0)
+            : false;
     }
 }

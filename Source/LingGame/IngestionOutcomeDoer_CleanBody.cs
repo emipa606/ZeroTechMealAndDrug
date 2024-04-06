@@ -5,7 +5,7 @@ namespace LingGame;
 
 public class IngestionOutcomeDoer_CleanBody : IngestionOutcomeDoer
 {
-    protected override void DoIngestionOutcomeSpecial(Pawn pawn, Thing ingested)
+    protected override void DoIngestionOutcomeSpecial(Pawn pawn, Thing ingested, int ingestedCount)
     {
         pawn.health.RestorePart(GetTorso(pawn));
     }

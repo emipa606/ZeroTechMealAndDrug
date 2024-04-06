@@ -5,7 +5,7 @@ namespace LingGame;
 
 public class IngestionOutcomeDoer_LoseWeightMeal : IngestionOutcomeDoer
 {
-    protected override void DoIngestionOutcomeSpecial(Pawn pawn, Thing ingested)
+    protected override void DoIngestionOutcomeSpecial(Pawn pawn, Thing ingested, int ingestedCount)
     {
         if (!pawn.RaceProps.Humanlike)
         {
@@ -40,6 +40,6 @@ public class IngestionOutcomeDoer_LoseWeightMeal : IngestionOutcomeDoer
             pawn.story.bodyType = BodyTypeDefOf.Hulk;
         }
 
-        pawn.Drawer.renderer.graphics.ResolveAllGraphics();
+        pawn.Drawer.renderer.SetAllGraphicsDirty();
     }
 }
